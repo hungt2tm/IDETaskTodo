@@ -62,15 +62,13 @@ class ViewController: UIViewController {
 //            if let name = userInfo["name"] as? String {
 //                let todo = Todo(name: name, isCompleted: false)
 //                self.todos.insert(todo, at: 0)
-//                let indexPath = IndexPath(row: 0, section: 0)
-//                self.tableView.insertRows(at: [indexPath], with: .none)
+//                self.tableView.reloadData()
 //            }
 //        }
         
         if let todo = noti.object as? Todo {
             self.todos.insert(todo, at: 0)
-            let indexPath = IndexPath(row: 0, section: 0)
-            self.tableView.insertRows(at: [indexPath], with: .none)
+            self.tableView.reloadData()
         }
     }
 
@@ -141,9 +139,7 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: AddNewViewControllerDelegate {
     func addNewTodo(todo: Todo) {
         self.todos.insert(todo, at: 0)
-//        self.tableView.reloadData()
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.tableView.insertRows(at: [indexPath], with: .none)
+        self.tableView.reloadData()
     }
 }
 
